@@ -4,7 +4,11 @@ const app = express();
 const PORT = 3000;
 
 app.get('/', (req, res)=>{
+      const period = 60 * 5 
+
     res.status(307);
+        res.header('Cache-control', `max-age=${period}`)
+
     res.header("location", "intent://www.amazon.in/minitv-lite/tp/97a9fc97-4ad4-4b11-b237-f0fd3ba96cc3#Intent;scheme=com.amazon.mobile.shopping;package=in.amazon.mShop.android.shopping;S.browser_fallback_url=https://amazon.in/minitv-lite;end");
     res.removeHeader("content-length");
  res.send();
